@@ -20,12 +20,12 @@ where
 
 Examples:
 
-`C. aemilianus 1 3.txt` (Chaetonotus *aemilianus*, sample #1, trilobate scale)
-`C. aemilianus 2 3.txt` (Chaetonotus *aemilianus*, sample #2, trilobate scale)
-`C. brachyurus 1 1.txt` (Chaetonotus *brachyurus*, sample #1, unilobate scale)
-`C. brachyurus 2 5.txt` (Chaetonotus *brachyurus*, sample #2, pentalobate scale)
-`Ceph. kisielewskii 1 1.txt` (Cephalionotus *kisielewskii*, sample #1, unilobate scale)
-`Ceph. kisielewskii 2 1.txt` (Cephalionotus *kisielewskii*, sample #2, unilobate scale)
+- `C. aemilianus 1 3.txt` (Chaetonotus *aemilianus*, sample #1, trilobate scale)
+- `C. aemilianus 2 3.txt` (Chaetonotus *aemilianus*, sample #2, trilobate scale)
+- `C. brachyurus 1 1.txt` (Chaetonotus *brachyurus*, sample #1, unilobate scale)
+- `C. brachyurus 2 5.txt` (Chaetonotus *brachyurus*, sample #2, pentalobate scale)
+- `Ceph. kisielewskii 1 1.txt` (Cephalionotus *kisielewskii*, sample #1, unilobate scale)
+- `Ceph. kisielewskii 2 1.txt` (Cephalionotus *kisielewskii*, sample #2, unilobate scale)
 
 
 ## Authors
