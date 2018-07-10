@@ -2,8 +2,17 @@
 
 This repository contains the data and the Python scripts used in the morphometric analysis of scales of Gastrotricha. This work was part of a Master's project developed by Kayla Wirthwein from 2016 to 2018, under the supervision of André Garraffoni.
 
-
 ## Getting Started
+
+### Prerequisites
+
+- Python 3
+- NumPy
+- SciPy
+- scikit-learn
+- Matplotlib
+
+### Data description
 
 In the analysis we used data from 8 landmarks in the scales of animals of the phylum [Gastrotricha](https://en.wikipedia.org/wiki/Gastrotrich). 67 species were studied, from which a total of 162 sample scales were analyzed.
 
@@ -18,7 +27,7 @@ where
 - `index`: a number that distinguishes samples from the same species
 - `number of lobes`: the number of lobes of the sample, which can be either 1, 3 or 5
 
-Examples:
+#### Examples:
 
 - `C. aemilianus 1 3.txt` (Chaetonotus *aemilianus*, sample #1, trilobate scale)
 - `C. aemilianus 2 3.txt` (Chaetonotus *aemilianus*, sample #2, trilobate scale)
