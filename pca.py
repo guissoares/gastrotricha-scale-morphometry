@@ -4,8 +4,10 @@
 import os.path
 import glob
 import numpy as np
+from scipy.special import erfinv
 from sklearn.decomposition import PCA
 from matplotlib import pyplot as plt
+from matplotlib.patches import Ellipse
 from collections import OrderedDict
 
 input_file, title, scale_of_the_scales = ('dataset_procrustes.txt', 'PCA - Positions', .06)
@@ -17,7 +19,7 @@ annotation = True
 colors = ['#ffdb1d', '#629ea0', '#601047']
 legend_labels = ['unilobate', 'trilobate', 'pentalobate']
 points_file = 'dataset_procrustes.txt'
-aspect_ratio = 5./8.
+aspect_ratio = 1.
 
 def parse_data_file(filename):
     X = []
@@ -38,6 +40,19 @@ def parse_data_file(filename):
     return S, np.array(X), np.array(y)
 S, X, y = parse_data_file(input_file)
 
+def getConfidenceEllipse(X, color, p=0.9):
+    x, y = (X[:,0], X[:,1])
+    cov = np.cov(x, y)
+    lambda_, v = np.linalg.eig(cov)
+    lambda_ = np.sqrt(lambda_)
+    z = np.sqrt(2)*erfinv(p)
+    ell = Ellipse(xy=(np.mean(x), np.mean(y)),
+                  width=lambda_[0]*z*2, height=lambda_[1]*z*2,
+                  angle=np.rad2deg(np.arccos(v[0, 0])))
+    ell.set_facecolor('none')
+    ell.set_edgecolor(color)
+    return ell
+
 print(X.shape)
 labels, y = np.unique(y, return_inverse=True)
 
@@ -57,6 +72,7 @@ if plot_type == '3d':
     ax = fig.add_subplot(111, projection='3d')
     for i in range(len(labels)):
         mask = (y == i)
+        ell = getConfidenceEllipse(Xpca[mask])
         ax.scatter(Xpca[mask,0], Xpca[mask,1], Xpca[mask,2], color=colors[i])
     if annotation:
         for i, x in enumerate(Xpca):
@@ -65,8 +81,12 @@ if plot_type == '3d':
     plt.title(title)
     plt.show()
 elif plot_type == '2d':
+    fig = plt.figure()
+    ax = fig.add_subplot(111)
     for i in range(len(labels)):
         mask = (y == i)
+        ell = getConfidenceEllipse(Xpca[mask], color=colors[i])
+        ax.add_artist(ell)
         plt.scatter(Xpca[mask,0], Xpca[mask,1], color=colors[i])
     if annotation:
         for i, x in enumerate(Xpca):
@@ -75,7 +95,13 @@ elif plot_type == '2d':
     plt.title(title)
     plt.show()
 elif plot_type == 'scales':
+    fig = plt.figure()
+    ax = fig.add_subplot(111)
     _, points, _ = parse_data_file(points_file)
+    for i in range(len(labels)):
+        mask = (y == i)
+        ell = getConfidenceEllipse(Xpca[mask], color=colors[i])
+        ax.add_artist(ell)
     for i in range(len(Xpca)):
         polygon = points[i].reshape(-1, 2)
         polygon[:,1] = -polygon[:,1]
