@@ -1,6 +1,6 @@
 # Morphometry of Gastrotricha scales 
 
-This repository contains the data and the Python scripts used in the morphometric analysis of scales of Gastrotricha. This work was part of a Master's project developed at by Kayla Wirthwein at the University of Campinas, Brazil, under the supervision of André Garraffoni.
+This repository contains the data and the Python scripts used in the morphometric analysis of scales of Gastrotricha. This work was part of a Master's project developed by Kayla Wirthwein at the University of Campinas, Brazil, under the supervision of André Garraffoni.
 
 ## Getting Started
 
